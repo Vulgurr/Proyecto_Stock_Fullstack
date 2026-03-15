@@ -21,5 +21,5 @@ En la carpeta `/docs` se puede encontrar la documentación técnica fundacional:
 1. **Contrato de API REST:** Definición exhaustiva de endpoints, verbos HTTP, códigos de estado y validaciones de negocio.
 2. **Modelo de Dominio (UML):** Estructura de entidades y relaciones.
 3. **Máquina de Estados:** Diagrama de transición para el ciclo de vida de las órdenes de trabajo.
-
+4. **Análisis de Casos de Uso:** Glosario, diagramas y [especificaciones detalladas de los procesos críticos](https://github.com/Vulgurr/Proyecto_Stock_Fullstack/tree/main/docs/Diagramas_Actuales/GLOSARIO_CASOS_DE_USO.md) (Planificación de órdenes, gestión de estados y carga de consumos reales).
 *(El historial de iteraciones de diseño se encuentra documentado en el archivo `CHANGELOG_ARQUITECTURA.md`, dentro de la carpeta `/docs`)*

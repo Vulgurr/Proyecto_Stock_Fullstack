@@ -4,6 +4,13 @@ Los diagramas que queden deprecados serán movidos a la carpeta `/Historial_Diag
 
 ---
 
+### [15/03/2026] - Casos de Uso
+* **Se agregaron:** 
+    * Diagrama de Casos de Uso 
+    * Glosario de Casos de Uso.
+    * Especificaciones para los Casos de Uso core del sistema: Planificación, Gestión de Estados y Carga de Consumos Reales.
+* **Hitos:** Definición de la lógica de Stock Proyectado vs. Stock Real y validación de márgenes de tolerancia en producción.
+
 ### [15/03/2026] - Refactor del Modelo de Dominio
 * **Se eliminaron:** Las clases `Disponibilidad` y `Tipo` de receta.
 * **Se agregaron:** El rol de `Comprador` y la entidad `Lote` (para manejar vencimientos y mejorar la trazabilidad física).
