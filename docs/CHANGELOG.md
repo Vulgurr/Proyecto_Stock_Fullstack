@@ -4,6 +4,11 @@ Los diagramas que queden deprecados serán movidos a la carpeta `/Historial_Diag
 
 ---
 
+### [16/03/2026] - Gestión de Lotes, Trazabilidad y Refactor de Documentación
+* **Se agregaron (Casos de Uso):** * Nuevos flujos al Glosario y al Diagrama UML para el ciclo de vida del inventario: `CU-30 Consultar Trazabilidad de Lote`, `CU-31 Registrar Ingreso de Lote` y `CU-32 Ajustar/Dar de Baja Lote`.
+* **Se agregaron (Contrato de API):** * Definición del recurso `/lotes` con endpoints para listar, consultar trazabilidad (Kardex), registrar ingresos y realizar ajustes manuales de stock.
+* **Lógica actualizada:** * **Refactor del CU-29 (Cargar consumos):** Se integró la política de consumo en cascada con prioridad **FEFO** (First Expires, First Out). El sistema ahora pre-completa sugerencias de lotes de forma inteligente, permitiendo al usuario el control final (override) para garantizar la trazabilidad física real.
+
 ### [15/03/2026] - Casos de Uso
 * **Se agregaron:** 
     * Diagrama de Casos de Uso 

@@ -10,14 +10,17 @@
 * El actor debe tener sesión iniciada 
 * Debe existir al menos una orden de trabajo en el sistema que esté en el estado `INICIADA` y haya finalizado en producción.
 
+### Reglas de Negocio
+* **Prioridad para la elección de lotes:** El negocio implementa FEFO (First Expires, First Out) para la prioridad de selección de los lotes de manera automática
+
 ### Flujo Normal
   1. El actor inicia el caso de uso
   2. El sistema carga una lista desplegable de todas las órdenes de Trabajo en estado `INICIADA`.
   3. El actor selecciona la órden que quiere cargar.
-  4. El sistema muestra una lista de todos los productos utilizados para realizar la receta indicada en la órden, sus cantidades esperadas y solicita las cantidades reales.
-  5. Para cada producto en la lista, el actor ingresa la cantidad real de insumos utilizados y presiona "Confirmar".
+  4. El sistema muestra una lista de todos los productos utilizados para realizar la receta indicada en la órden, sus cantidades esperadas y solicita las cantidades reales. Además, el sistema calcula. sugiere y pre-completa la cantidad de lotes necesarios para satisfacer las cantidades de acuerdo a las Reglas del Negocio.
+  5. Para cada producto en la lista, el actor ingresa la cantidad real de insumos utilizados, los lotes de dichos insumos y presiona "Confirmar".
   6. El sistema verifica que los insumos utilizados se encuentren en un rango aceptable definido previamente.
-  7. El sistema actualiza el stock real en la base de datos y actualiza el estado de la orden a `FINALIZADA`.
+  7. El sistema actualiza el stock real en la base de datos, la cantidad actual de cada lote y actualiza el estado de la orden a `FINALIZADA`.
   8. El sistema muestra un mensaje de éxito y finaliza el caso de uso.
 
 ### Flujos Alternativos

@@ -28,6 +28,9 @@ A continuación se detallan las descripciones funcionales breves de los casos de
 * **CU-17 Crear Producto:** Permite registrar un nuevo artículo en el sistema definiendo sus parámetros base (ID, descripción, unidad de medida, cantidad inicial y umbral mínimo de reposición).
 * **CU-18 Modificar Producto:** Permite actualizar las características de un artículo existente o aplicarle una baja lógica (deshabilitación) para evitar su uso futuro.
 * **CU-19 Eliminar Producto:** Permite la eliminación física de un artículo del sistema, validando estrictamente que no posea dependencias (ej. no formar parte de ninguna receta activa).
+* **CU-30 Consultar Trazabilidad de Lote:** Permite al Gerente o Administrativo buscar un lote específico (por código o por producto) para visualizar su cantidad física actual, su fecha de vencimiento y el historial de todos los movimientos (Kardex) asociados a ese lote.
+* **CU-31 Registrar Ingreso de Lote:** Permite al Comprador (o Administrativo) registrar la entrada física de nueva mercadería al almacén, creando un lote en el sistema con su cantidad inicial, código de proveedor y fecha de vencimiento.
+* **CU-32 Ajustar/Dar de Baja Lote:** Permite al Gerente realizar un ajuste de inventario manual para descontar stock de un lote específico o darlo de baja completamente (por ejemplo, por vencimiento, contaminación o merma en el almacén).
 
 ## Módulo de Producción y Recetas (BOM)
 * **CU-20 Ver Recetas:** Permite explorar el listado de fórmulas de producción y desglosar su composición en subniveles de ingredientes.
