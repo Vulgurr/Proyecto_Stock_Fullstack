@@ -2,7 +2,16 @@
 
 Los diagramas que queden deprecados serán movidos a la carpeta `/Historial_Diagramas` y renombrados con su fecha original para mantener la trazabilidad del proceso de diseño.
 
+
 ---
+
+### [20/03/2026] - Arquitectura del Sistema y Diagrama de Clases Integral
+* **Se agregaron:** * **Diagrama de Clases UML completo:** Mapeo integral del dominio del sistema estructurado bajo una arquitectura de tres capas estrictas (Controladores REST, Gestores de Negocio y Repositorios de Datos) para asegurar alta cohesión y bajo acoplamiento.
+* **Lógica actualizada:** * **Patrones de Diseño Implementados:** Integración estructural del patrón **Composite** para la jerarquía de productos abstractos (`MateriaPrima` y `ProductoElaborado`), y del patrón **State** para la mutación segura de las Órdenes de Trabajo. Adicionalmente, se modeló la segregación de dominios (compras vs. producción) y la orquestación automática de eventos temporales mediante `<<CronJob>>`.
+
+### [19/03/2026] - Refactor de Máquina de Estados y Lógica de Producción
+* **Lógica actualizada:** * **Diagrama de Estados (Orden de Trabajo):** Se rediseñó el ciclo de vida incorporando la validación cruzada estricta entre **Stock Proyectado** (para la fase de planificación) y **Stock Real** (para la habilitación de ejecución).
+* **Se agregaron (Nuevos Estados y Flujos):** * Transiciones condicionales y estados de control como `PENDIENTE DE APROBACION` para auditar desvíos y mermas entre el consumo estimado vs. real y `FIN TEMPRANO` para liberación de stock remanente. 
 
 ### [16/03/2026] - Gestión de Lotes, Trazabilidad y Refactor de Documentación
 * **Se agregaron (Casos de Uso):** * Nuevos flujos al Glosario y al Diagrama UML para el ciclo de vida del inventario: `CU-30 Consultar Trazabilidad de Lote`, `CU-31 Registrar Ingreso de Lote` y `CU-32 Ajustar/Dar de Baja Lote`.
