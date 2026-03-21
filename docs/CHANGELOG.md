@@ -5,6 +5,10 @@ Los diagramas que queden deprecados serán movidos a la carpeta `/Historial_Diag
 
 ---
 
+### [21/03/2026] - Diseño Físico de Base de Datos (DER)
+* **Se agregaron (Arquitectura de Datos):** * **Diagrama Entidad-Relación (DER):** Mapeo físico del modelo de clases a un esquema relacional SQL normalizado. Se definieron claves primarias (PK), foráneas (FK) y tablas intermedias (`ItemReceta`, `DetalleCompra`, `Consumo`) para garantizar la integridad referencial.
+* **Lógica actualizada:** * **Estrategia de Mapeo Objeto-Relacional:** Se implementó la estrategia *Single Table* para persistir la herencia del patrón Composite en la tabla `Productos`. Además, se consolidó el motor de trazabilidad conectando los `Consumos` reales de producción directamente con los `Lotes` físicos, permitiendo el cálculo automático de mermas y desvíos (Planificado vs. Real).
+
 ### [20/03/2026] - Arquitectura del Sistema y Diagrama de Clases Integral
 * **Se agregaron:** * **Diagrama de Clases UML completo:** Mapeo integral del dominio del sistema estructurado bajo una arquitectura de tres capas estrictas (Controladores REST, Gestores de Negocio y Repositorios de Datos) para asegurar alta cohesión y bajo acoplamiento.
 * **Lógica actualizada:** * **Patrones de Diseño Implementados:** Integración estructural del patrón **Composite** para la jerarquía de productos abstractos (`MateriaPrima` y `ProductoElaborado`), y del patrón **State** para la mutación segura de las Órdenes de Trabajo. Adicionalmente, se modeló la segregación de dominios (compras vs. producción) y la orquestación automática de eventos temporales mediante `<<CronJob>>`.
