@@ -90,3 +90,26 @@ Cuando la consulta es muy compleja (ej: cruzar varias tablas o filtrar por mucha
 * **La gran diferencia:** No usamos código SQL nativo, sino **JPQL (Java Persistence Query Language)**.
 * En JPQL, consultamos a las **Clases de Java** y a sus **Atributos**, NO a las tablas y columnas de Postgres.
 * **Ejemplo:** `@Query("SELECT p FROM Producto p WHERE p.estaActivo = true")` (Fijate que usamos `Producto` en mayúscula como la clase, no `productos` como la tabla).
+
+# Guía de Capa de Servicio y Lógica de Negocio (Spring Boot)
+
+En la arquitectura de 3 capas, el "Service" (o Gestor) es el cerebro de la aplicación. Es el puente entre el Controlador (que recibe peticiones) y el Repositorio (que habla con la base de datos).
+
+## 1. La Anotación `@Service`
+* Le indica a Spring Boot que esta clase contiene **Lógica de Negocio**.
+* Convierte la clase en un "Bean". Esto significa que Spring se encarga de crear una única instancia (Singleton) de esta clase al arrancar la aplicación y la mantiene en memoria lista para ser inyectada donde se necesite.
+
+## 2. Inyección de Dependencias (Constructor vs @Autowired)
+Para que el Gestor pueda usar el Repositorio, necesitamos inyectarlo.
+* **La forma antigua:** Poner `@Autowired` arriba del atributo privado. (No recomendado hoy en día porque dificulta el testing).
+* **La mejor práctica (Constructor):** Declarar el atributo como `private final` e inicializarlo a través del constructor de la clase. Spring Boot es lo suficientemente inteligente para inyectar la dependencia automáticamente al leer el constructor.
+
+## 3. Seguridad de Datos: `@Transactional`
+
+Esta anotación es un escudo protector para la base de datos. Se coloca en métodos que modifican datos (Crear, Actualizar, Eliminar).
+* **El concepto del "Todo o Nada":**  Es básicamente una transacción. Se hace todo o no se hace nada
+
+## 4. Patrones de Diseño de Negocio: Soft Delete (Borrado Lógico)
+En sistemas financieros o ERPs, **nunca se ejecuta un `DELETE` real en SQL**.
+* Si borramos un producto físicamente, se romperían las claves foráneas de facturas o movimientos de stock pasados.
+* **Solución:** Se implementa un "Borrado Lógico". Se cambia un flag booleano (ej. `estaActivo = false`) y se registra una `fechaBaja`. El registro sigue existiendo para el historial, pero el sistema lo ignora en las búsquedas cotidianas.
