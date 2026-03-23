@@ -7,17 +7,20 @@ import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = true) // Necesario para Lombok en herencia
 @Entity
 @Table(name = "productos_elaborados")
 @PrimaryKeyJoinColumn(name = "id_producto")
 public class ProductoElaborado extends Producto {
-    // Transient le dice a JPA: "Ignorá este método, no intentes crear una columna para él"
+    // Transient le dice a JPA: "Ignorá este method, no intentes crear una columna para él"
     @Transient
-    public void getRecetaPlaceholder() {
-        // TODO: Este método se implementará cuando declaremos la entidad Receta en otro Sprint
-        System.out.println("Aquí iría la lógica para obtener la receta");
+    public List<Producto> obtenerReceta() {
+        // TODO: Implementar recetas
+        return new ArrayList<Producto>();
     }
     // TODO: (Sprint 2) Implementar la relación con la entidad Receta
     // @OneToOne

@@ -3,17 +3,21 @@ import com.vulgurr.erp.stockbackend.enums.UnidadDeMedida; // Importamos el Enum 
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
+import java.util.List;
 @Data
 @Entity
-@Table(name = "productos")
-
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "productos")
 public abstract class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
+
+    // Esto es lo que ve el usuario, ej: "MP2057"
+    @Column(nullable = false, unique = true, length = 15)
+    private String codigoArticulo;
 
     @Column(nullable = false, length = 100)
     private String nombre;
@@ -45,4 +49,20 @@ public abstract class Producto {
             this.estaActivo = true; // Valor por defecto
         }
     }
+    @Transient
+    public void agregarProducto(Producto prod) {
+        throw new UnsupportedOperationException("No se pueden agregar ingredientes a este producto.");
+    }
+
+    @Transient
+    public void eliminarProducto(Producto prod) {
+        throw new UnsupportedOperationException("No se pueden eliminar ingredientes de este producto.");
+    }
+
+    @Transient
+    public List<Producto> obtenerReceta() {
+        // Por defecto, un producto genérico no tiene receta
+        return new ArrayList<Producto>();
+    }
+
 }
